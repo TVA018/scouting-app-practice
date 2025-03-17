@@ -1,12 +1,22 @@
 import './global.css'
+import LabeledTextInput from './components/LabeledTextInput';
 
 function App() {
   return (
-    <div className="flex flex-col w-full justify-center">
+    <>
+      <div className="flex flex-col w-full justify-center my-4">
         <h1 className="text-lg text-center">
             Home
         </h1>
-    </div>
+      </div>
+      <div className='flex flex-row w-full justify-center gap-10 my-4'>
+        <LabeledTextInput id="scouter-name" name="scouter-name">Scouter Name</LabeledTextInput>
+      </div>
+      <div className='flex flex-row w-full justify-center gap-10 my-4'>
+        <LabeledTextInput id="team-number" name="team-number">Team<br/>Number</LabeledTextInput>
+        <LabeledTextInput id="match-number" name="match-number">Match<br/>Number</LabeledTextInput>
+      </div>
+    </>
   )
 }
 
