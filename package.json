@@ -1,6 +1,7 @@
 {
   "name": "scouting-app",
   "private": true,
+  "homepage": "https://tva018.github.io/scouting-app-practice/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -16,6 +17,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
     "react": "^19.0.0",
+    "react-cookie": "^8.0.1",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0",
     "tailwindcss": "^4.0.14"
