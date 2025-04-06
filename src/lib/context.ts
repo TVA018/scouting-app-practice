@@ -6,6 +6,8 @@ export class AppData {
     scouterName?: string;
     profile: number = 0;
     matchNumber?: number;
+    team?: number;
+    teamNumbers?: number[];
 
     setScouterName?: Dispatch<SetStateAction<string | undefined>>;
     setMatchNumber?: Dispatch<SetStateAction<number | undefined>>;
@@ -13,10 +15,9 @@ export class AppData {
     setTeam?: Dispatch<SetStateAction<number | undefined>>;
     setTeamNumbers?: Dispatch<SetStateAction<number[] | undefined>>;
 
-    team?: number;
-    teamNumbers?: number[];
 
     flipField: boolean = false;
+    setFlipField?: Dispatch<SetStateAction<boolean>>;
 
     public async retrieveTBAData(){
         if(!this.matchNumber){

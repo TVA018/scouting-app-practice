@@ -1,7 +1,7 @@
-import '../global.css'
+import '../../global.css'
 import {useContext} from "react";
-import { AppContext } from '../lib/context';
-import Radio from "../gui/Radio.tsx";
+import { AppContext } from '../../lib/context.ts';
+import Radio from "../../gui/Radio.tsx";
 
 interface ProfileRadioProps {
   baseText: string;
@@ -21,7 +21,7 @@ const ProfileRadio = ({baseText, id, value}: ProfileRadioProps) => {
     }
   }
 
-  return <Radio text={text} id={id} value={value} onChange={onChange} defaultChecked={context.profile == value} />;
+  return <Radio text={text} name="scouter-profile" id={id} value={value} onChange={onChange} defaultChecked={context.profile == value} />;
 }
 
 const ProfileSelection = () => {
