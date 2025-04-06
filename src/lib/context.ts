@@ -4,15 +4,17 @@ import Constants from "./constants.ts";
 export class AppData {
     // Home page
     scouterName?: string;
-    profile?: number;
+    profile: number = 0;
     matchNumber?: number;
 
     setScouterName?: Dispatch<SetStateAction<string | undefined>>;
     setMatchNumber?: Dispatch<SetStateAction<number | undefined>>;
-    setProfile?: Dispatch<SetStateAction<number | undefined>>;
+    setProfile?: Dispatch<SetStateAction<number>>;
     setTeam?: Dispatch<SetStateAction<number | undefined>>;
+    setTeamNumbers?: Dispatch<SetStateAction<number[] | undefined>>;
 
-    team?: string;
+    team?: number;
+    teamNumbers?: number[];
 
     flipField: boolean = false;
 
@@ -20,6 +22,13 @@ export class AppData {
         if(!this.matchNumber){
             alert("NO MATCH NUMBER PROVIDED");
             return;
+        } else if(!this.setTeamNumbers){
+            alert("SET TEAM NUMBERS DOES NOT EXIST");
+            return;
+        }
+
+        const extractTeamNumbers = (teamKeys: string[]) => {
+            return teamKeys.map((teamKey) => parseInt(teamKey.slice(3)));
         }
 
         const request = await fetch(`${Constants.TBA_BASE_URL}/event/${Constants.EVENT_KEY}/matches/simple`, {
@@ -29,20 +38,24 @@ export class AppData {
 
         const json = await request.json();
         const targetMatch = json.find((e: {match_number: number}) => e.match_number == this.matchNumber);
-
-        console.log(targetMatch);
+        this.setTeamNumbers([
+            ...extractTeamNumbers(targetMatch.alliances.red.team_keys),
+            ...extractTeamNumbers(targetMatch.alliances.blue.team_keys)
+        ]);
     }
 
     public partialClear(){
         // clears the data partially, keeping certain values such as the scouter name
-        this.matchNumber = undefined;
-        this.team = undefined;
+        // have to use if statements because TypeScript sucks
+        if(this.setMatchNumber) {this.setMatchNumber(undefined)}
+        if(this.setTeamNumbers) {this.setTeamNumbers(undefined)}
+        if(this.setProfile) {this.setProfile(0)}
     }
 
-    public fullClear(){
-        this.scouterName = undefined;
-        this.partialClear()
-    }
+    // public fullClear(){
+    //     this.scouterName = undefined;
+    //     this.partialClear()
+    // }
 }
 
 export const AppContext = createContext(new AppData());

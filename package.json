@@ -9,8 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "tailwind-watch": "tailwindcss build -i resources/css/site.css -o public/css/style.css --watch",
-    "pre-deploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
