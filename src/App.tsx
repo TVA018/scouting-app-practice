@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col w-full justify-center my-4">
-        <h1 className="text-lg text-center">
+        <h1 className="text-lg text-center text-white">
             Home
         </h1>
         <form className="flex flex-col justify-center w-full gap-10">
@@ -27,9 +27,10 @@ function App() {
           </div>
           <ProfileSelection />
           <div className='flex flex-row w-full justify-around h-10'>
-            <input className="cursor-pointer bg-blue-950 w-40 h-full rounded-md hover:bg-blue-800 active:" type="button" value="Retrieve Data" onClick={() => context.retrieveTBAData()} />
+            <input className="cursor-pointer text-white bg-blue-950 w-40 h-full rounded-md hover:bg-blue-800 active:" type="button" value="Retrieve Data" onClick={() => context.retrieveTBAData()} />
           </div>
         </form>
+        <img src="./gameField.png" alt="image of field" />
       </div>
     </>
   )

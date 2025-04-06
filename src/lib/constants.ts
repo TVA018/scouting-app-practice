@@ -3,6 +3,7 @@ type Constants = {
   EVENT_KEY?: string,
   TBA_KEY?: string;
   TBA_HEADERS?: {"X-TBA-Auth-Key": string};
+  FIELD_IMAGE_URL?: string,
 }
 
 const Constants: Constants = {};
