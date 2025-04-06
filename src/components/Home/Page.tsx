@@ -19,8 +19,8 @@ function Page() {
 
   return (
     <>
-      <div className="flex flex-col w-full justify-center my-4">
-        <h1 className="text-lg text-center text-white mb-4">
+      <div className="flex flex-col w-full justify-center">
+        <h1 className="text-lg text-center text-white my-4">
           Home
         </h1>
         <form className="flex flex-col justify-center w-full gap-10">
