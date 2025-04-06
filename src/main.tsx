@@ -10,23 +10,23 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/scouting-app-practice/",
     element: <HomePage />
   },
   {
-    path: "/auto",
+    path: "/scouting-app-practice/auto",
     element: <AutoPage />
   },
   {
-    path: "/teleop",
+    path: "/scouting-app-practice/teleop",
     element: <TeleopPage />
   },
   {
-    path: "/endgame",
+    path: "/scouting-app-practice/endgame",
     element: <EndgamePage />
   },
   {
-    path: "/submit",
+    path: "/scouting-app-practice/submit",
     element: <SubmitPage />
   },
 ])

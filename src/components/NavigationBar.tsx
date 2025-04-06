@@ -7,7 +7,7 @@ interface ButtonProps {
 
 const RedirectButton = ({text, url}: ButtonProps) => {
   return (
-    <Link to={url}>
+    <Link to={`/scouting-app-practice${url}`}>
       <button className="text-md bg-blue-950 hover:bg-blue-800 cursor-pointer text-white h-20 w-[19vw] rounded-md">{text}</button>
     </Link>
   )
