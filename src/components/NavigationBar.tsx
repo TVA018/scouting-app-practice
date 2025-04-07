@@ -15,7 +15,7 @@ const RedirectButton = ({text, url}: ButtonProps) => {
 
 const NavigationBar = () => {
   return (
-    <div className="absolute bottom-0 flex flex-row justify-between w-full mb-2">
+    <div className="sticky bottom-0 flex flex-row justify-between w-full mb-2">
       <RedirectButton text="HOME" url="/" />
       <RedirectButton text="AUTO" url="/auto" />
       <RedirectButton text="TELEOP" url="/teleop" />

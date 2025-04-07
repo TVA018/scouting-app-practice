@@ -15,9 +15,12 @@ export class AppData {
     setTeam?: Dispatch<SetStateAction<number | undefined>>;
     setTeamNumbers?: Dispatch<SetStateAction<number[] | undefined>>;
 
-
     flipField: boolean = false;
     setFlipField?: Dispatch<SetStateAction<boolean>>;
+
+    // Auto
+    autoCoral: number[] = Array(4).fill(0);
+    setAutoCoral: Dispatch<SetStateAction<number>>[] = Array(4).fill(undefined);
 
     public async retrieveTBAData(){
         if(!this.matchNumber){
