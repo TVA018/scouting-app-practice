@@ -33,7 +33,7 @@ function Page() {
           <RetrieveDataButton />
         </form>
         <div className="flex flex-row justify-center w-full my-4">
-          <img className={`w-150 h-auto${context.flipField ? " scale-x-[-1]" : ""}`} src={fieldImage} alt="image of field" />
+          <img className={`w-150 h-auto${context.flipField ? "" : " scale-x-[-1]"}`} src={fieldImage} alt="image of field" />
         </div>
         <div className="flex flex-row justify-center w-full my-0">
           <input type="checkbox" id="flip-field" defaultChecked={context.flipField} onChange={(e) => context.setFlipField && context.setFlipField(e.target.checked)} />
