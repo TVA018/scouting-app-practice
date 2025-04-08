@@ -3,8 +3,10 @@ import NavigationBar from "../NavigationBar.tsx";
 const Page = () => {
   return (
     <>
-      <div className='flex flex-row w-full justify-around h-10 text-white text-4xl'>
-        THIS IS THE ENDGAME PAGE
+      <div className='flex flex-col h-full w-full gap-10 text-white items-center text-4xl'>
+        <h1 className="text-4xl text-center text-white my-4">
+          Endgame
+        </h1>
       </div>
       <NavigationBar />
     </>

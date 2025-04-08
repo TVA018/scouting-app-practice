@@ -3,7 +3,7 @@ import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
 import { AppContext } from "../../lib/context.ts";
 
-const CoralArea = () => {
+const CoralSection = () => {
   const context = useContext(AppContext);
 
   [context.autoCoral[0], context.setAutoCoral[0]] = useState(context.autoCoral[0]);
@@ -18,7 +18,7 @@ const CoralArea = () => {
   );
 }
 
-const AlgaeArea = () => {
+const AlgaeSection = () => {
   const context = useContext(AppContext);
 
   [context.autoAlgae.processor, context.setAutoAlgae.processor] = useState(context.autoAlgae.processor);
@@ -32,13 +32,13 @@ const AlgaeArea = () => {
   );
 }
 
-const MobilityArea = () => {
+const MobilitySection = () => {
   const context = useContext(AppContext);
   [context.autoMobility, context.setAutoMobility] = useState(context.autoMobility);
 
   return (
     <div className="flex flex-row justify-center gap-1 items-center">
-      <input className="w-3 h-3" type="checkbox" id="auto-mobility" defaultChecked={context.autoMobility} />
+      <input className="w-3 h-3" type="checkbox" id="auto-mobility" defaultChecked={context.autoMobility} onChange={(event) => context.setAutoMobility && context.setAutoMobility(event.target.checked)} />
       <label className="text-xl" htmlFor="auto-mobility">Mobility</label>
     </div>
   );
@@ -51,9 +51,9 @@ const Page = () => {
         <h1 className="text-4xl text-center text-white my-4">
           Auto
         </h1>
-        <CoralArea />
-        <AlgaeArea />
-        <MobilityArea />
+        <CoralSection />
+        <AlgaeSection />
+        <MobilitySection />
       </div>
       <NavigationBar />
     </>

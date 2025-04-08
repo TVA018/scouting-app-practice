@@ -33,6 +33,23 @@ export class AppData {
     };
     setAutoMobility?: Dispatch<SetStateAction<boolean>>;
 
+    // Teleop
+    teleopCoral: number[] = Array(4).fill(0);
+    teleopAlgae: {processor: number, barge: number} = {
+        processor: 0,
+        barge: 0
+    };
+    teleopFoul: number = 0;
+    teleopDefense: boolean = false;
+
+    setTeleopCoral: Dispatch<SetStateAction<number>>[] = Array(4).fill(undefined);
+    setTeleopAlgae: {processor?: Dispatch<SetStateAction<number>>, barge?: Dispatch<SetStateAction<number>>} = {
+        processor: undefined,
+        barge: undefined
+    };
+    setTeleopFoul?: Dispatch<SetStateAction<number>>;
+    setTeleopDefense?: Dispatch<SetStateAction<boolean>>;
+
     public async retrieveTBAData(){
         if(!this.matchNumber){
             alert("NO MATCH NUMBER PROVIDED");
