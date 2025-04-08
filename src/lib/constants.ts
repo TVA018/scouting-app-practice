@@ -15,4 +15,22 @@ Constants.TBA_HEADERS = {
   "X-TBA-Auth-Key": Constants.TBA_KEY,
 };
 
+class EndgameClimb {
+  static None = new EndgameClimb("None");
+  static Park = new EndgameClimb("Park");
+  static Shallow = new EndgameClimb("Shallow");
+  static Deep = new EndgameClimb("Deep");
+
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  toString(){
+    return this.name;
+  }
+}
+
 export default Constants;
+export {EndgameClimb};

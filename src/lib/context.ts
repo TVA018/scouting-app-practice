@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import Constants from "./constants.ts";
+import Constants, {EndgameClimb} from "./constants.ts";
 
 export class AppData {
     // Home page
@@ -49,6 +49,10 @@ export class AppData {
     };
     setTeleopFoul?: Dispatch<SetStateAction<number>>;
     setTeleopDefense?: Dispatch<SetStateAction<boolean>>;
+
+    // Endgame
+    endgameClimb: EndgameClimb = EndgameClimb.None;
+    setEndgameClimb?: Dispatch<SetStateAction<EndgameClimb>>;
 
     public async retrieveTBAData(){
         if(!this.matchNumber){
