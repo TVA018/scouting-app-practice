@@ -20,7 +20,18 @@ export class AppData {
 
     // Auto
     autoCoral: number[] = Array(4).fill(0);
+    autoAlgae: {processor: number, barge: number} = {
+        processor: 0,
+        barge: 0
+    };
+    autoMobility: boolean = false;
+
     setAutoCoral: Dispatch<SetStateAction<number>>[] = Array(4).fill(undefined);
+    setAutoAlgae: {processor?: Dispatch<SetStateAction<number>>, barge?: Dispatch<SetStateAction<number>>} = {
+        processor: undefined,
+        barge: undefined
+    };
+    setAutoMobility?: Dispatch<SetStateAction<boolean>>;
 
     public async retrieveTBAData(){
         if(!this.matchNumber){
