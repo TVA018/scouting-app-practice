@@ -47,7 +47,7 @@ const MobilitySection = () => {
 const Page = () => {
   return (
     <>
-      <div className='flex flex-col h-auto w-full gap-10 text-white font-bold items-center text-4xl'>
+      <div className='flex flex-col h-auto w-full gap-10 pb-10 text-white font-bold items-center text-4xl'>
         <h1 className="text-4xl text-center text-white my-4">
           Auto
         </h1>
