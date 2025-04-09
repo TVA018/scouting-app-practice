@@ -8,7 +8,7 @@ interface Properties {
     name: string;
     width?: string;
     inputType?: string;
-    onChange: Dispatch<SetStateAction<any>>; // What value of the app data does this input change
+    onChange?: Dispatch<SetStateAction<any>>; // What value of the app data does this input change
 }
 
 const LabeledInput = ({id, name, children, initialText, width, inputType = "text", onChange}: Properties) => {
@@ -17,7 +17,7 @@ const LabeledInput = ({id, name, children, initialText, width, inputType = "text
   return (
     <div className={divTailwindCSS}>
         <label className="text-xl text-center text-white w-full" htmlFor={id}>{children}</label>
-        <input type={inputType} className='text-white border-b-2 border-white text-lg text-center w-full' defaultValue={initialText} id={id} name={name} onChange={(e) => onChange(e.target.value)}></input>
+        <input type={inputType} className='text-white border-b-2 border-white text-lg text-center w-full' defaultValue={initialText} id={id} name={name} onChange={(e) => onChange && onChange(e.target.value)}></input>
     </div>
   )
 }

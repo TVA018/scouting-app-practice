@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
 import { AppContext } from "../../lib/context.ts";
@@ -6,10 +6,6 @@ import { AppContext } from "../../lib/context.ts";
 const CoralSection = () => {
   const context = useContext(AppContext);
 
-  [context.autoCoral[0], context.setAutoCoral[0]] = useState(context.autoCoral[0]);
-  [context.autoCoral[1], context.setAutoCoral[1]] = useState(context.autoCoral[1]);
-  [context.autoCoral[2], context.setAutoCoral[2]] = useState(context.autoCoral[2]);
-  [context.autoCoral[3], context.setAutoCoral[3]] = useState(context.autoCoral[3]);
 
   return (
     <div className="flex flex-row flex-wrap w-80 justify-around gap-8">
@@ -21,9 +17,6 @@ const CoralSection = () => {
 const AlgaeSection = () => {
   const context = useContext(AppContext);
 
-  [context.autoAlgae.processor, context.setAutoAlgae.processor] = useState(context.autoAlgae.processor);
-  [context.autoAlgae.barge, context.setAutoAlgae.barge] = useState(context.autoAlgae.barge);
-
   return (
     <div className="flex flex-row items-center gap-8">
       <Incrementer text="Processor" value={context.autoAlgae.processor} onChange={context.setAutoAlgae.processor} />
@@ -34,7 +27,6 @@ const AlgaeSection = () => {
 
 const MobilitySection = () => {
   const context = useContext(AppContext);
-  [context.autoMobility, context.setAutoMobility] = useState(context.autoMobility);
 
   return (
     <div className="flex flex-row justify-center items-center w-full my-0 gap-1.5">

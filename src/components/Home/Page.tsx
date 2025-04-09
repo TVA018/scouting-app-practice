@@ -1,7 +1,7 @@
 import '../../global.css'
 import LabeledInput from '../../gui/LabeledInput.tsx';
 import ProfileSelection from "../../components/Home/ProfileSelection.tsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import { AppContext } from '../../lib/context.ts';
 import RetrieveDataButton from "../../components/Home/RetrieveDataButton.tsx";
 import fieldImage from "/gameField.png";
@@ -9,14 +9,6 @@ import NavigationBar from "../../components/NavigationBar.tsx";
 
 function Page() {
   const context = useContext(AppContext);
-
-  // Initialize state hooks
-  [context.scouterName, context.setScouterName] = useState(context.scouterName);
-  [context.matchNumber, context.setMatchNumber] = useState(context.matchNumber);
-  [context.profile, context.setProfile] = useState(context.profile);
-  [context.team, context.setTeam] = useState(context.team);
-  [context.teamNumbers, context.setTeamNumbers] = useState(context.teamNumbers);
-  [context.flipField, context.setFlipField] = useState(context.flipField);
 
   return (
     <>

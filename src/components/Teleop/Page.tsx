@@ -1,15 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
 import { AppContext } from "../../lib/context.ts";
 
 const CoralSection = () => {
   const context = useContext(AppContext);
-
-  [context.teleopCoral[0], context.setTeleopCoral[0]] = useState(context.teleopCoral[0]);
-  [context.teleopCoral[1], context.setTeleopCoral[1]] = useState(context.teleopCoral[1]);
-  [context.teleopCoral[2], context.setTeleopCoral[2]] = useState(context.teleopCoral[2]);
-  [context.teleopCoral[3], context.setTeleopCoral[3]] = useState(context.teleopCoral[3]);
 
   return (
     <div className="flex flex-row flex-wrap w-80 justify-around gap-8">
@@ -20,9 +15,6 @@ const CoralSection = () => {
 
 const AlgaeSection = () => {
   const context = useContext(AppContext);
-
-  [context.teleopAlgae.processor, context.setTeleopAlgae.processor] = useState(context.teleopAlgae.processor);
-  [context.teleopAlgae.barge, context.setTeleopAlgae.barge] = useState(context.teleopAlgae.barge);
 
   return (
     <div className="flex flex-row items-center gap-8">
@@ -35,8 +27,6 @@ const AlgaeSection = () => {
 const FoulSection = () => {
   const context = useContext(AppContext);
 
-  [context.teleopFoul, context.setTeleopFoul] = useState(context.teleopFoul);
-
   return (
     <>
       <Incrementer text="Fouls" value={context.teleopFoul} onChange={context.setTeleopFoul} />
@@ -46,8 +36,6 @@ const FoulSection = () => {
 
 const DefenseSection = () => {
   const context = useContext(AppContext);
-
-  [context.teleopDefense, context.setTeleopDefense] = useState(context.teleopDefense);
 
   return (
     <div className="flex flex-row justify-center items-center w-35 my-0 gap-1.5">

@@ -1,5 +1,5 @@
 import NavigationBar from "../NavigationBar.tsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {AppContext} from "../../lib/context.ts";
 import {EndgameClimb} from "../../lib/constants.ts";
 import Radio from "../../gui/Radio.tsx";
@@ -17,9 +17,6 @@ const ClimbRadio = ({climbType}: RadioProps) => {
 }
 
 const Page = () => {
-  const context = useContext(AppContext);
-  [context.endgameClimb, context.setEndgameClimb] = useState(context.endgameClimb);
-
   return (
     <>
       <div className='flex flex-col h-full w-full gap-5 text-white items-center text-4xl'>
