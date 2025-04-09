@@ -52,7 +52,7 @@ const DefenseSection = () => {
   return (
     <div className="flex flex-row justify-center items-center w-full my-0 gap-1.5">
       <input className="w-4 h-4" type="checkbox" id="auto-mobility" defaultChecked={context.teleopDefense} onChange={(event) => context.setTeleopDefense && context.setTeleopDefense(event.target.checked)} />
-      <label className="text-xl" htmlFor="auto-mobility">Defense</label>
+      <label className="text-xl font-medium" htmlFor="auto-mobility">Defense</label>
     </div>
   );
 }
