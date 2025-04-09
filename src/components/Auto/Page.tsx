@@ -12,7 +12,7 @@ const CoralSection = () => {
   [context.autoCoral[3], context.setAutoCoral[3]] = useState(context.autoCoral[3]);
 
   return (
-    <div className="flex flex-row flex-wrap w-80 justify-around gap-5">
+    <div className="flex flex-row flex-wrap w-80 justify-around gap-8">
       {[...Array(4).keys()].map((i) => <Incrementer text={`Level ${i + 1} Coral`} value={context.autoCoral[i]} onChange={context.setAutoCoral[i]} />)}
     </div>
   );
@@ -25,7 +25,7 @@ const AlgaeSection = () => {
   [context.autoAlgae.barge, context.setAutoAlgae.barge] = useState(context.autoAlgae.barge);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center gap-8">
       <Incrementer text="Processor" value={context.autoAlgae.processor} onChange={context.setAutoAlgae.processor} />
       <Incrementer text="Barge" value={context.autoAlgae.barge} onChange={context.setAutoAlgae.barge} />
     </div>
@@ -47,7 +47,7 @@ const MobilitySection = () => {
 const Page = () => {
   return (
     <>
-      <div className='flex flex-col h-full w-full gap-10 text-white items-center text-4xl'>
+      <div className='flex flex-col h-full w-full gap-10 text-white font-bold items-center text-4xl'>
         <h1 className="text-4xl text-center text-white my-4">
           Auto
         </h1>

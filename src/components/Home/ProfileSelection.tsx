@@ -31,7 +31,7 @@ const ProfileSelection = () => {
   const RedAlliance = () => {
     return (
       <div className={allianceContainerClass}>
-        <h1 className="text-center text-red-500">RED ALLIANCE</h1>
+        <h1 className="text-center font-semibold text-xl text-red-500">RED ALLIANCE</h1>
         <ProfileRadio baseText="Profile 1" id="radio-1" value={0} />
         <ProfileRadio baseText="Profile 2" id="radio-2" value={1} />
         <ProfileRadio baseText="Profile 3" id="radio-3" value={2} />
@@ -42,7 +42,7 @@ const ProfileSelection = () => {
   const BlueAlliance = () => {
     return (
       <div className={allianceContainerClass}>
-        <h1 className="text-center text-blue-500">BLUE ALLIANCE</h1>
+        <h1 className="text-center font-semibold text-xl text-blue-500">BLUE ALLIANCE</h1>
         <ProfileRadio baseText="Profile 4" id="radio-4" value={3} />
         <ProfileRadio baseText="Profile 5" id="radio-5" value={4} />
         <ProfileRadio baseText="Profile 6" id="radio-6" value={5} />

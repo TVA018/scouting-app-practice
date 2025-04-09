@@ -22,12 +22,12 @@ const Page = () => {
 
   return (
     <>
-      <div className='flex flex-col h-full w-full gap-10 text-white items-center text-4xl'>
-        <h1 className="text-4xl text-center text-white my-4">
+      <div className='flex flex-col h-full w-full gap-5 text-white items-center text-4xl'>
+        <h1 className="text-4xl text-center font-bold text-white my-4">
           Endgame
         </h1>
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl my-2">Climb</h1>
+          <h1 className="text-3xl font-semibold my-2">Climb</h1>
           {EndgameClimb.asList.map((climbType: EndgameClimb) => <ClimbRadio climbType={climbType} />)}
         </div>
       </div>
