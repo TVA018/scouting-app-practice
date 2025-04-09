@@ -6,9 +6,16 @@ interface ButtonProps {
 }
 
 const RedirectButton = ({text, url}: ButtonProps) => {
+  const currentPathName = window.location.pathname;
+  const targetLink = `/scouting-app-practice${url}`;
+  const normal = "bg-blue-950";
+  const light = "bg-blue-800";
+  const buttonColors = `${(currentPathName == targetLink) ? light : normal} hover:${light}`;
+  const buttonClass = `text-md ${buttonColors} cursor-pointer text-white h-20 w-[19vw] rounded-md`;
+
   return (
-    <Link to={`/scouting-app-practice${url}`}>
-      <button className="text-md bg-blue-950 hover:bg-blue-800 cursor-pointer text-white h-20 w-[19vw] rounded-md">{text}</button>
+    <Link to={targetLink}>
+      <button className={buttonClass}>{text}</button>
     </Link>
   )
 }
