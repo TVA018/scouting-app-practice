@@ -25,7 +25,7 @@ const AlgaeSection = () => {
   [context.autoAlgae.barge, context.setAutoAlgae.barge] = useState(context.autoAlgae.barge);
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-row items-center gap-8">
       <Incrementer text="Processor" value={context.autoAlgae.processor} onChange={context.setAutoAlgae.processor} />
       <Incrementer text="Barge" value={context.autoAlgae.barge} onChange={context.setAutoAlgae.barge} />
     </div>

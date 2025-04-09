@@ -25,7 +25,7 @@ const AlgaeSection = () => {
   [context.teleopAlgae.barge, context.setTeleopAlgae.barge] = useState(context.teleopAlgae.barge);
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-row items-center gap-8">
       <Incrementer text="Processor" value={context.teleopAlgae.processor} onChange={context.setTeleopAlgae.processor} />
       <Incrementer text="Barge" value={context.teleopAlgae.barge} onChange={context.setTeleopAlgae.barge} />
     </div>
@@ -50,9 +50,9 @@ const DefenseSection = () => {
   [context.teleopDefense, context.setTeleopDefense] = useState(context.teleopDefense);
 
   return (
-    <div className="flex flex-row justify-center items-center w-full my-0 gap-1.5">
+    <div className="flex flex-row justify-center items-center w-35 my-0 gap-1.5">
       <input className="w-4 h-4" type="checkbox" id="auto-mobility" defaultChecked={context.teleopDefense} onChange={(event) => context.setTeleopDefense && context.setTeleopDefense(event.target.checked)} />
-      <label className="text-xl font-medium" htmlFor="auto-mobility">Defense</label>
+      <label className="text-2xl font-medium" htmlFor="auto-mobility">Defense</label>
     </div>
   );
 }
@@ -66,8 +66,10 @@ const Page = () => {
         </h1>
         <CoralSection />
         <AlgaeSection />
-        <FoulSection />
-        <DefenseSection />
+        <div className="flex flex-row items-center gap-8">
+          <FoulSection />
+          <DefenseSection />
+        </div>
       </div>
       <NavigationBar />
     </>
