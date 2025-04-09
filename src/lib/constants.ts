@@ -16,10 +16,17 @@ Constants.TBA_HEADERS = {
 };
 
 class EndgameClimb {
-  static None = new EndgameClimb("None");
-  static Park = new EndgameClimb("Park");
-  static Shallow = new EndgameClimb("Shallow");
-  static Deep = new EndgameClimb("Deep");
+  static readonly None = new EndgameClimb("None");
+  static readonly Park = new EndgameClimb("Park");
+  static readonly Shallow = new EndgameClimb("Shallow");
+  static readonly Deep = new EndgameClimb("Deep");
+
+  static readonly asList = [
+    EndgameClimb.None,
+    EndgameClimb.Park,
+    EndgameClimb.Shallow,
+    EndgameClimb.Deep,
+  ];
 
   name: string;
 

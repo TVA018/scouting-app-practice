@@ -16,8 +16,8 @@ const LabeledInput = ({id, name, children, initialText, width, inputType = "text
 
   return (
     <div className={divTailwindCSS}>
-        <label className="text-md text-center text-white w-full" htmlFor={id}>{children}</label>
-        <input type={inputType} className='text-white border-b-2 border-white text-md text-center w-full' defaultValue={initialText} id={id} name={name} onChange={(e) => onChange(e.target.value)}></input>
+        <label className="text-xl text-center text-white w-full" htmlFor={id}>{children}</label>
+        <input type={inputType} className='text-white border-b-2 border-white text-xl text-center w-full' defaultValue={initialText} id={id} name={name} onChange={(e) => onChange(e.target.value)}></input>
     </div>
   )
 }

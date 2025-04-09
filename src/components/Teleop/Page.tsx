@@ -50,8 +50,8 @@ const DefenseSection = () => {
   [context.teleopDefense, context.setTeleopDefense] = useState(context.teleopDefense);
 
   return (
-    <div className="flex flex-row justify-center gap-1 items-center">
-      <input className="w-3 h-3" type="checkbox" id="auto-mobility" defaultChecked={context.teleopDefense} onChange={(event) => context.setTeleopDefense && context.setTeleopDefense(event.target.checked)} />
+    <div className="flex flex-row justify-center items-center w-full my-0 gap-1.5">
+      <input className="w-4 h-4" type="checkbox" id="auto-mobility" defaultChecked={context.teleopDefense} onChange={(event) => context.setTeleopDefense && context.setTeleopDefense(event.target.checked)} />
       <label className="text-xl" htmlFor="auto-mobility">Defense</label>
     </div>
   );

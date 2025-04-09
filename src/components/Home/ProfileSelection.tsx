@@ -26,10 +26,11 @@ const ProfileRadio = ({baseText, id, value}: ProfileRadioProps) => {
 
 const ProfileSelection = () => {
   const context = useContext(AppContext);
+  const allianceContainerClass = "flex flex-col text-2xl gap-2"
 
   const RedAlliance = () => {
     return (
-      <div className="flex flex-col">
+      <div className={allianceContainerClass}>
         <h1 className="text-center text-red-500">RED ALLIANCE</h1>
         <ProfileRadio baseText="Profile 1" id="radio-1" value={0} />
         <ProfileRadio baseText="Profile 2" id="radio-2" value={1} />
@@ -40,7 +41,7 @@ const ProfileSelection = () => {
 
   const BlueAlliance = () => {
     return (
-      <div className="flex flex-col">
+      <div className={allianceContainerClass}>
         <h1 className="text-center text-blue-500">BLUE ALLIANCE</h1>
         <ProfileRadio baseText="Profile 4" id="radio-4" value={3} />
         <ProfileRadio baseText="Profile 5" id="radio-5" value={4} />
