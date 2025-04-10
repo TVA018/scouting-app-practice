@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import {useContext, useState} from "react";
 import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
 import { AppContext } from "../../lib/context.ts";
@@ -46,6 +46,20 @@ const DefenseSection = () => {
 }
 
 const Page = () => {
+  const context = useContext(AppContext);
+
+  [context.teleopCoral[0], context.setTeleopCoral[0]] = useState(context.teleopCoral[0]);
+  [context.teleopCoral[1], context.setTeleopCoral[1]] = useState(context.teleopCoral[1]);
+  [context.teleopCoral[2], context.setTeleopCoral[2]] = useState(context.teleopCoral[2]);
+  [context.teleopCoral[3], context.setTeleopCoral[3]] = useState(context.teleopCoral[3]);
+
+  [context.teleopAlgae.processor, context.setTeleopAlgae.processor] = useState(context.teleopAlgae.processor);
+  [context.teleopAlgae.barge, context.setTeleopAlgae.barge] = useState(context.teleopAlgae.barge);
+
+  [context.teleopFoul, context.setTeleopFoul] = useState(context.teleopFoul);
+
+  [context.teleopDefense, context.setTeleopDefense] = useState(context.teleopDefense);
+
   return (
     <>
       <div className='flex flex-col h-auto w-full gap-10 pb-10 text-white items-center text-4xl'>
