@@ -17,10 +17,10 @@ const TimeInput = ({id, name, children, value, width, onChange}: Properties) => 
   const [minutes, setMinutes] = useState(value.slice(0, 2));
   const [seconds, setSeconds] = useState(value.slice(3, 5));
 
-  const updateTime = () => {
+  const updateTime = (currentMinutes: string, currentSeconds: string) => {
     if(!onChange){ return; }
 
-    const newTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    const newTime = `${currentMinutes.padStart(2, '0')}:${currentSeconds.padStart(2, '0')}`;
     onChange(newTime);
   }
 
@@ -30,7 +30,7 @@ const TimeInput = ({id, name, children, value, width, onChange}: Properties) => 
     strippedMinutes = minutesNumber.toString().padStart(2, "0");
     setMinutes(strippedMinutes);
 
-    updateTime();
+    updateTime(strippedMinutes, seconds);
   }
 
   const secondsChanged = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +39,7 @@ const TimeInput = ({id, name, children, value, width, onChange}: Properties) => 
     strippedSeconds = minutesNumber.toString().padStart(2, "0");
     setSeconds(strippedSeconds);
 
-    updateTime();
+    updateTime(minutes, strippedSeconds);
   }
 
   return (
