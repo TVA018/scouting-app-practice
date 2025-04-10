@@ -34,11 +34,11 @@ const Page = () => {
         <h1 className="text-4xl text-center font-bold text-white my-4">
           Endgame
         </h1>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mb-4">
           <h1 className="text-3xl font-semibold my-2">Climb</h1>
           {EndgameClimb.asList.map((climbType: EndgameClimb) => <ClimbRadio climbType={climbType} />)}
         </div>
-        <TimeInput id="scouter-name" name="scouter-name" width='w-60' value={context.climbTime} onChange={context.setClimbTime}>Time Climbed At (MM:SS)</TimeInput>
+        <TimeInput id="scouter-name" name="scouter-name" width='w-60' value={context.climbTime} onChange={context.setClimbTime}><span className="font-bold">Time Climbed At</span></TimeInput>
       </div>
       <NavigationBar />
     </>
