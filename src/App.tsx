@@ -33,7 +33,6 @@ const router = createBrowserRouter([
 
 const App = () => {
   const context = useContext(AppContext);
-  console.log("TEST");
 
   // REFACTOR TO SIMPLIFY WITH LOOPS LATER (i.e. CORAL)
 
