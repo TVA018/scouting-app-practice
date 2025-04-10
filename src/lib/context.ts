@@ -3,13 +3,13 @@ import Constants, {EndgameClimb} from "./constants.ts";
 
 export class AppData {
     // Home page
-    scouterName?: string;
+    scouterName: string = "";
     profile: number = 0;
     matchNumber?: number;
     team?: number;
     teamNumbers?: number[];
 
-    setScouterName?: Dispatch<SetStateAction<string | undefined>>;
+    setScouterName?: Dispatch<SetStateAction<string>>;
     setMatchNumber?: Dispatch<SetStateAction<number | undefined>>;
     setProfile?: Dispatch<SetStateAction<number>>;
     setTeam?: Dispatch<SetStateAction<number | undefined>>;
@@ -52,7 +52,10 @@ export class AppData {
 
     // Endgame
     endgameClimb: EndgameClimb = EndgameClimb.None;
+    climbTime: string = "00:00";
+
     setEndgameClimb?: Dispatch<SetStateAction<EndgameClimb>>;
+    setClimbTime?: Dispatch<SetStateAction<string>>;
 
     public async retrieveTBAData(){
         if(!this.matchNumber){

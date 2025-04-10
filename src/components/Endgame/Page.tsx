@@ -3,6 +3,7 @@ import {useContext, useState} from "react";
 import {AppContext} from "../../lib/context.ts";
 import {EndgameClimb} from "../../lib/constants.ts";
 import Radio from "../../gui/Radio.tsx";
+import TimeInput from "../../gui/TimeInput.tsx";
 
 interface RadioProps {
   climbType: EndgameClimb;
@@ -20,6 +21,12 @@ const Page = () => {
   const context = useContext(AppContext);
 
   [context.endgameClimb, context.setEndgameClimb] = useState(context.endgameClimb);
+  [context.climbTime, context.setClimbTime] = useState(context.climbTime);
+
+  // const onClimbTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   // Clean the input to make sure it is in a proper format
+  //
+  // }
 
   return (
     <>
@@ -31,6 +38,7 @@ const Page = () => {
           <h1 className="text-3xl font-semibold my-2">Climb</h1>
           {EndgameClimb.asList.map((climbType: EndgameClimb) => <ClimbRadio climbType={climbType} />)}
         </div>
+        <TimeInput id="scouter-name" name="scouter-name" width='w-60' value={context.climbTime} onChange={context.setClimbTime}>Time Climbed At (MM:SS)</TimeInput>
       </div>
       <NavigationBar />
     </>
