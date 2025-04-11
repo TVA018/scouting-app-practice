@@ -14,6 +14,7 @@ const Page = () => {
           Submission
         </h1>
         <LabeledTextArea title="Commentary" value={context.commentary} onChange={(e) => context.setCommentary && context.setCommentary(e.target.value)} />
+        <button className="text-xl bg-blue-500 hover:bg-blue-300 w-40 h-10 rounded-2xl border-1" onClick={() => console.log(context)}>Submit</button>
       </div>
       <NavigationBar />
     </>
