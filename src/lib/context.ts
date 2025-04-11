@@ -57,6 +57,10 @@ export class AppData {
     setEndgameClimb?: Dispatch<SetStateAction<EndgameClimb>>;
     setClimbTime?: Dispatch<SetStateAction<string>>;
 
+    // Submit
+    commentary: string = "";
+    setCommentary?: Dispatch<SetStateAction<string>>;
+
     public async retrieveTBAData(){
         if(!this.matchNumber){
             alert("NO MATCH NUMBER PROVIDED");
