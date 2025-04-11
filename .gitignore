@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # API
-./src/lib/sheetsCredentials.json
+***/sheetsCredentials.json
