@@ -1,7 +1,7 @@
 import '../../global.css'
 import LabeledInput from '../../gui/LabeledInput.tsx';
 import ProfileSelection from "../../components/Home/ProfileSelection.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useAppContext } from '../../lib/context.ts';
 import RetrieveDataButton from "../../components/Home/RetrieveDataButton.tsx";
 import fieldImage from "/gameField.png";
@@ -25,11 +25,14 @@ function Page() {
         </h1>
         <form className="flex flex-col justify-center w-full gap-10">
           <div className='flex flex-row w-full justify-center gap-10 my-4'>
-            <LabeledInput inputType='text' id="scouter-name" name="scouter-name" width='w-40' value={context.scouterName} onChange={context.setScouterName} >Scouter Name</LabeledInput>
-            <LabeledInput inputType='number' id="match-number" name="match-number" width='w-40' value={context.matchNumber ? context.matchNumber.toString() : ""} onChange={context.setMatchNumber} >Match Number</LabeledInput>
+            <LabeledInput inputType='text' id="scouter-name" name="scouter-name" width='w-40' value={context.scouterName} onChange={(newValue) => context.setScouterName && context.setScouterName(newValue)} >Scouter Name</LabeledInput>
+            <LabeledInput inputType='number' id="match-number" name="match-number" width='w-40' 
+            value={context.matchNumber ? context.matchNumber.toString() : ""} 
+            onChange={(newValue) => context.setMatchNumber && context.setMatchNumber((newValue && parseInt(newValue)) || undefined)} 
+            onBlur={() => context.retrieveTBAData()}
+            >Match Number</LabeledInput>
           </div>
           <ProfileSelection />
-          <RetrieveDataButton />
         </form>
         <div className="flex flex-row justify-center w-full my-4">
           <img className={`w-150 h-auto${context.flipField ? "" : " scale-x-[-1]"}`} src={fieldImage} alt="image of field" />
