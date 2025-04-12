@@ -1,9 +1,8 @@
 import '../../global.css'
 import LabeledInput from '../../gui/LabeledInput.tsx';
 import ProfileSelection from "../../components/Home/ProfileSelection.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import { useAppContext } from '../../lib/context.ts';
-import RetrieveDataButton from "../../components/Home/RetrieveDataButton.tsx";
 import fieldImage from "/gameField.png";
 import NavigationBar from "../../components/NavigationBar.tsx";
 

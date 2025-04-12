@@ -81,6 +81,12 @@ export class AppData {
 
         const json = await request.json();
         const targetMatch = json.find((e: {match_number: number}) => e.match_number == this.matchNumber);
+        
+        if(!targetMatch){
+            alert(`MATCH ${this.matchNumber} IS OUT OF BOUNDS`);
+            return;
+        }
+
         const parsedTeamNumbers = [
             ...extractTeamNumbers(targetMatch.alliances.red.team_keys),
             ...extractTeamNumbers(targetMatch.alliances.blue.team_keys)

@@ -1,5 +1,5 @@
 import '../global.css'
-import {Dispatch, ReactNode, SetStateAction} from "react";
+import {ReactNode} from "react";
 
 interface Properties {
     children: ReactNode;
