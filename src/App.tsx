@@ -5,6 +5,7 @@ import AutoPage from "./components/Auto/Page.tsx";
 import TeleopPage from "./components/Teleop/Page.tsx";
 import EndgamePage from "./components/Endgame/Page.tsx";
 import SubmitPage from "./components/Submit/Page.tsx";
+import { SheetsManager } from "./lib/constants.ts";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const testSheets = new SheetsManager("1lGAAYk_YGrNcs8Q-9KaKpuw68rTI_vqCP4hokhLk_u0");
+
   return (
     <RouterProvider router={router} />
   );

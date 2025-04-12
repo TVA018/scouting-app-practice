@@ -1,3 +1,6 @@
+import {google, sheets_v4} from "googleapis";
+import { auth } from "googleapis/build/src/apis/abusiveexperiencereport";
+
 type Constants = {
   TBA_BASE_URL?: string,
   EVENT_KEY?: string,
@@ -39,5 +42,38 @@ class EndgameClimb {
   }
 }
 
+class SheetsManager {
+  sheetsId: string;
+  client?: any;
+  googleSheets?: sheets_v4.Sheets;
+
+  // Create client instance
+  static readonly auth = new google.auth.GoogleAuth({
+    keyFile: "./sheetsCredentials.json",
+    scopes: "https://www.googleapis.com/auth/spreadsheets"
+  });
+
+  constructor(sheetsId: string){
+    this.sheetsId = sheetsId;
+
+    this.create();
+  }
+
+  async create(){
+    this.client = await SheetsManager.auth.getClient();
+    this.googleSheets = google.sheets({
+      version: "v4",
+      auth: this.client
+    });
+
+    const metaData = await this.googleSheets.spreadsheets.get({
+      auth: auth,
+      spreadsheetId: this.sheetsId
+    });
+
+    console.log(metaData);
+  }
+}
+
 export default Constants;
-export {EndgameClimb};
+export {EndgameClimb, SheetsManager};
