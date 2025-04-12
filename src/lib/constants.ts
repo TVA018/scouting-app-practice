@@ -1,6 +1,3 @@
-import {google, sheets_v4} from "googleapis";
-import { auth } from "googleapis/build/src/apis/abusiveexperiencereport";
-
 type Constants = {
   TBA_BASE_URL?: string,
   EVENT_KEY?: string,
