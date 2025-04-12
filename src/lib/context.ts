@@ -1,4 +1,4 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import Constants, {EndgameClimb} from "./constants.ts";
 
 export class AppData {
@@ -81,18 +81,48 @@ export class AppData {
 
         const json = await request.json();
         const targetMatch = json.find((e: {match_number: number}) => e.match_number == this.matchNumber);
-        this.setTeamNumbers([
+        const parsedTeamNumbers = [
             ...extractTeamNumbers(targetMatch.alliances.red.team_keys),
             ...extractTeamNumbers(targetMatch.alliances.blue.team_keys)
-        ]);
+        ];
+
+        this.teamNumbers = parsedTeamNumbers;
+        this.setTeamNumbers(parsedTeamNumbers);
     }
 
-    public partialClear(){
+    public onSubmit(){
         // clears the data partially, keeping certain values such as the scouter name
         // have to use if statements because TypeScript sucks
-        if(this.setMatchNumber) {this.setMatchNumber(undefined)}
-        if(this.setTeamNumbers) {this.setTeamNumbers(undefined)}
-        if(this.setProfile) {this.setProfile(0)}
+        // It's ok to set values directly because switching back to other pages will re-render the components
+
+        // Home page
+        if(this.matchNumber) this.matchNumber = parseInt(`${this.matchNumber}`) + 1;
+        this.retrieveTBAData();
+        
+        // Auto
+        for(let i = 0; i < this.autoCoral.length; i++){
+            this.autoCoral[i] = 0;
+        }
+
+        this.autoAlgae.barge = 0;
+        this.autoAlgae.processor = 0;
+        this.autoMobility = false;
+
+        // Teleop
+        for(let i = 0; i < this.teleopCoral.length; i++){
+            this.teleopCoral[i] = 0;
+        }
+
+        this.teleopAlgae.barge = 0;
+        this.teleopAlgae.processor = 0;
+        this.teleopFoul = 0;
+        this.teleopDefense = false;
+
+        // Endgame
+        this.endgameClimb = EndgameClimb.None;
+        this.climbTime = "00:00";
+
+        if(this.setCommentary) this.setCommentary("");
     }
 
     // public fullClear(){
@@ -101,4 +131,13 @@ export class AppData {
     // }
 }
 
-export const AppContext = createContext(new AppData());
+export const AppContext = createContext<AppData | undefined>(undefined);
+export const useAppContext = () => {
+    const context = useContext(AppContext);
+
+    if(context === undefined){
+        throw new Error("NO APP CONTEXT EXISTS");
+    }
+
+    return context;
+}

@@ -1,10 +1,10 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
-import { AppContext } from "../../lib/context.ts";
+import { useAppContext } from "../../lib/context.ts";
 
 const CoralSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <div className="flex flex-row flex-wrap w-80 justify-around gap-8">
@@ -14,7 +14,7 @@ const CoralSection = () => {
 }
 
 const AlgaeSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <div className="flex flex-row items-center gap-8">
@@ -25,7 +25,7 @@ const AlgaeSection = () => {
 }
 
 const FoulSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <>
@@ -35,7 +35,7 @@ const FoulSection = () => {
 }
 
 const DefenseSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <div className="flex flex-row justify-center items-center w-35 my-0 gap-1.5">
@@ -46,7 +46,7 @@ const DefenseSection = () => {
 }
 
 const Page = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   [context.teleopCoral[0], context.setTeleopCoral[0]] = useState(context.teleopCoral[0]);
   [context.teleopCoral[1], context.setTeleopCoral[1]] = useState(context.teleopCoral[1]);

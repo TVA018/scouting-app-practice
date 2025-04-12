@@ -1,6 +1,6 @@
 import NavigationBar from "../NavigationBar.tsx";
-import {useContext, useState} from "react";
-import {AppContext} from "../../lib/context.ts";
+import {useState} from "react";
+import {useAppContext} from "../../lib/context.ts";
 import {EndgameClimb} from "../../lib/constants.ts";
 import Radio from "../../gui/Radio.tsx";
 import TimeInput from "../../gui/TimeInput.tsx";
@@ -10,7 +10,7 @@ interface RadioProps {
 }
 
 const ClimbRadio = ({climbType}: RadioProps) => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const climbName = climbType.toString();
   const radioName = `${climbName}-radio`;
 
@@ -18,7 +18,7 @@ const ClimbRadio = ({climbType}: RadioProps) => {
 }
 
 const Page = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   [context.endgameClimb, context.setEndgameClimb] = useState(context.endgameClimb);
   [context.climbTime, context.setClimbTime] = useState(context.climbTime);

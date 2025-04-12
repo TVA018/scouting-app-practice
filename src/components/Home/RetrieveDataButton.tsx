@@ -1,8 +1,7 @@
-import {useContext} from "react";
-import {AppContext} from "../../lib/context.ts";
+import { useAppContext } from "../../lib/context";
 
 const RetrieveDataButton = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const onClick = () => context.retrieveTBAData();
 
   return (

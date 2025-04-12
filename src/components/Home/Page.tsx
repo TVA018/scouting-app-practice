@@ -1,14 +1,14 @@
 import '../../global.css'
 import LabeledInput from '../../gui/LabeledInput.tsx';
 import ProfileSelection from "../../components/Home/ProfileSelection.tsx";
-import {useContext, useState} from "react";
-import { AppContext } from '../../lib/context.ts';
+import {useState} from "react";
+import { useAppContext } from '../../lib/context.ts';
 import RetrieveDataButton from "../../components/Home/RetrieveDataButton.tsx";
 import fieldImage from "/gameField.png";
 import NavigationBar from "../../components/NavigationBar.tsx";
 
 function Page() {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   [context.scouterName, context.setScouterName] = useState(context.scouterName);
   [context.matchNumber, context.setMatchNumber] = useState(context.matchNumber);

@@ -1,10 +1,10 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 import Incrementer from "../../gui/Incrementer.tsx";
 import NavigationBar from "../NavigationBar.tsx";
-import { AppContext } from "../../lib/context.ts";
+import { useAppContext } from "../../lib/context.ts";
 
 const CoralSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
 
   return (
@@ -15,7 +15,7 @@ const CoralSection = () => {
 }
 
 const AlgaeSection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <div className="flex flex-row items-center gap-8">
@@ -26,7 +26,7 @@ const AlgaeSection = () => {
 }
 
 const MobilitySection = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   return (
     <div className="flex flex-row justify-center items-center w-full my-0 gap-1.5">
@@ -37,7 +37,7 @@ const MobilitySection = () => {
 }
 
 const Page = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
 
   [context.autoCoral[0], context.setAutoCoral[0]] = useState(context.autoCoral[0]);
   [context.autoCoral[1], context.setAutoCoral[1]] = useState(context.autoCoral[1]);

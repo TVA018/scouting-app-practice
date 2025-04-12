@@ -1,7 +1,6 @@
-import '../../global.css'
-import {useContext} from "react";
-import { AppContext } from '../../lib/context.ts';
+import '../../global.css';
 import Radio from "../../gui/Radio.tsx";
+import { useAppContext } from '../../lib/context.ts';
 
 interface ProfileRadioProps {
   baseText: string;
@@ -10,7 +9,7 @@ interface ProfileRadioProps {
 }
 
 const ProfileRadio = ({baseText, id, value}: ProfileRadioProps) => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const profileIdentifier = baseText;
   const teamNumber = ((context.teamNumbers && typeof context.profile == "number") ? ` (${context.teamNumbers[value]})` : "");
   const text = profileIdentifier + teamNumber;
@@ -24,9 +23,9 @@ const ProfileRadio = ({baseText, id, value}: ProfileRadioProps) => {
   return <Radio text={text} name="scouter-profile" id={id} value={value} onChange={onChange} defaultChecked={context.profile == value} />;
 }
 
-const ProfileSelection = () => {
-  const context = useContext(AppContext);
-  const allianceContainerClass = "flex flex-col text-2xl gap-2"
+function ProfileSelection() {
+  const context = useAppContext();
+  const allianceContainerClass = "flex flex-col text-2xl gap-2";
 
   const RedAlliance = () => {
     return (
@@ -37,7 +36,7 @@ const ProfileSelection = () => {
         <ProfileRadio baseText="Profile 3" id="radio-3" value={2} />
       </div>
     );
-  }
+  };
 
   const BlueAlliance = () => {
     return (
@@ -48,14 +47,14 @@ const ProfileSelection = () => {
         <ProfileRadio baseText="Profile 6" id="radio-6" value={5} />
       </div>
     );
-  }
+  };
 
   return (
     <div className="flex flex-row justify-center w-full gap-10">
       {context.flipField ? <BlueAlliance /> : <RedAlliance />}
       {context.flipField ? <RedAlliance /> : <BlueAlliance />}
     </div>
-  )
+  );
 }
 
 export default ProfileSelection

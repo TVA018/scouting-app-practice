@@ -1,10 +1,10 @@
 import NavigationBar from "../NavigationBar.tsx";
 import LabeledTextArea from "../../gui/LabeledTextArea.tsx";
-import {AppContext} from "../../lib/context.ts";
-import {useContext, useState} from "react";
+import {useState} from "react";
+import { useAppContext } from "../../lib/context.ts";
 
 const Page = () => {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   [context.commentary, context.setCommentary] = useState(context.commentary);
 
   return (
@@ -14,7 +14,10 @@ const Page = () => {
           Submission
         </h1>
         <LabeledTextArea title="Commentary" value={context.commentary} onChange={(e) => context.setCommentary && context.setCommentary(e.target.value)} />
-        <button className="text-xl bg-blue-500 hover:bg-blue-300 w-40 h-10 rounded-2xl border-1" onClick={() => console.log(context)}>Submit</button>
+        <button className="text-xl bg-blue-500 hover:bg-blue-300 w-40 h-10 rounded-2xl border-1" onClick={() => {
+          console.log(context);
+          context.onSubmit();
+        }}>Submit</button>
       </div>
       <NavigationBar />
     </>
