@@ -118,10 +118,50 @@ export class AppData {
         this.setMatchData(this.matchData);
     }
 
-    public onSubmit(){
+    public stringify(){
+        return JSON.stringify({
+            scouterName: this.scouterName,
+            matchNumber: this.matchNumber,
+            teamNumber: this.matchData && this.matchData[this.profile].teamNumber,
+            profileIndex: this.profile + 1,
+            auto: {
+                coral: [...this.autoCoral],
+                algae: {
+                    processor: this.autoAlgae.processor,
+                    barge: this.autoAlgae.barge
+                },
+                mobility: this.autoMobility
+            },
+            teleop: {
+                coral: [...this.teleopCoral],
+                algae: {
+                    processor: this.teleopAlgae.processor,
+                    barge: this.teleopAlgae.barge
+                },
+                fouls: this.teleopFoul,
+                defense: this.teleopDefense
+            },
+            endgame: {
+                climbType: this.endgameClimb.toString(),
+                climbTime: this.climbTime
+            },
+            commentary: this.commentary
+        });
+    }
+
+    public async onSubmit(){
+        // upload the data to google sheets
+
         // clears the data partially, keeping certain values such as the scouter name
         // have to use if statements because TypeScript sucks
         // It's ok to set values directly because switching back to other pages will re-render the components
+        await fetch(`${Constants.BACK_END_URL}scouting-data/add`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: this.stringify()
+        });
 
         // Home page
         if(this.matchNumber) this.matchNumber = parseInt(`${this.matchNumber}`) + 1;
