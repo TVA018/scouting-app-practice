@@ -8,7 +8,7 @@ type Constants = {
 }
 
 const Constants: Constants = {
-  BACK_END_URL: "http://865test.ddns.net/"//"http://localhost:3000/"
+  BACK_END_URL: "http://865test.ddns.net:3000/"//"http://localhost:3000/"
 };
 
 Constants.TBA_BASE_URL = "https://www.thebluealliance.com/api/v3";
