@@ -13,7 +13,7 @@ function Page() {
   [context.matchNumber, context.setMatchNumber] = useState(context.matchNumber);
   [context.profile, context.setProfile] = useState(context.profile);
   [context.team, context.setTeam] = useState(context.team);
-  [context.teamNumbers, context.setTeamNumbers] = useState(context.teamNumbers);
+  [context.matchData, context.setMatchData] = useState(context.matchData);
   [context.flipField, context.setFlipField] = useState(context.flipField);
 
   return (
@@ -28,7 +28,7 @@ function Page() {
             <LabeledInput inputType='number' id="match-number" name="match-number" width='w-40' 
             value={context.matchNumber ? context.matchNumber.toString() : ""} 
             onChange={(newValue) => context.setMatchNumber && context.setMatchNumber((newValue && parseInt(newValue)) || undefined)} 
-            onBlur={() => context.retrieveTBAData()}
+            onBlur={() => context.retrieveMatchData()}
             >Match Number</LabeledInput>
           </div>
           <ProfileSelection />

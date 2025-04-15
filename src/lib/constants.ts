@@ -4,9 +4,12 @@ type Constants = {
   TBA_KEY?: string;
   TBA_HEADERS?: {"X-TBA-Auth-Key": string};
   FIELD_IMAGE_URL?: string,
+  BACK_END_URL: string
 }
 
-const Constants: Constants = {};
+const Constants: Constants = {
+  BACK_END_URL: "http://localhost:3000/"
+};
 
 Constants.TBA_BASE_URL = "https://www.thebluealliance.com/api/v3";
 Constants.EVENT_KEY = "2025oncmp1";

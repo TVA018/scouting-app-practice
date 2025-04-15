@@ -1,19 +1,24 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import Constants, {EndgameClimb} from "./constants.ts";
 
+interface MatchData {
+    scouterName?: string,
+    teamNumber: number
+};
+
 export class AppData {
     // Home page
     scouterName: string = "";
     profile: number = 0;
     matchNumber?: number;
     team?: number;
-    teamNumbers?: number[];
+    matchData?: MatchData[];
 
     setScouterName?: Dispatch<SetStateAction<string>>;
     setMatchNumber?: Dispatch<SetStateAction<number | undefined>>;
     setProfile?: Dispatch<SetStateAction<number>>;
     setTeam?: Dispatch<SetStateAction<number | undefined>>;
-    setTeamNumbers?: Dispatch<SetStateAction<number[] | undefined>>;
+    setMatchData?: Dispatch<SetStateAction<MatchData[] | undefined>>;
 
     flipField: boolean = false;
     setFlipField?: Dispatch<SetStateAction<boolean>>;
@@ -61,25 +66,33 @@ export class AppData {
     commentary: string = "";
     setCommentary?: Dispatch<SetStateAction<string>>;
 
-    public async retrieveTBAData(){
+    public async retrieveMatchData(){
         if(!this.matchNumber){
             alert("NO MATCH NUMBER PROVIDED");
             return;
-        } else if(!this.setTeamNumbers){
-            alert("SET TEAM NUMBERS DOES NOT EXIST");
+        } else if(!this.setMatchData){
+            alert("SET MATCH DATA DOES NOT EXIST");
             return;
         }
 
+        // Getting scouter name
+        const scouterNameRequest = await fetch(`${Constants.BACK_END_URL}match/${this.matchNumber}`, {
+            method: "GET",
+        });
+
+        const scouterNames = await scouterNameRequest.json();
+
+        // Getting team numbers
         const extractTeamNumbers = (teamKeys: string[]) => {
             return teamKeys.map((teamKey) => parseInt(teamKey.slice(3)));
         }
 
-        const request = await fetch(`${Constants.TBA_BASE_URL}/event/${Constants.EVENT_KEY}/matches/simple`, {
+        const tbaRequest = await fetch(`${Constants.TBA_BASE_URL}/event/${Constants.EVENT_KEY}/matches/simple`, {
             method: "GET",
             headers: Constants.TBA_HEADERS
         });
 
-        const json = await request.json();
+        const json = await tbaRequest.json();
         const targetMatch = json.find((e: {match_number: number}) => e.match_number == this.matchNumber);
         
         if(!targetMatch){
@@ -92,8 +105,17 @@ export class AppData {
             ...extractTeamNumbers(targetMatch.alliances.blue.team_keys)
         ];
 
-        this.teamNumbers = parsedTeamNumbers;
-        this.setTeamNumbers(parsedTeamNumbers);
+        // Creating match data
+        this.matchData = [];
+
+        for(let i = 0; i < 6; i++){
+            this.matchData.push({
+                scouterName: scouterNames[i].scouterName,
+                teamNumber: parsedTeamNumbers[i]
+            });
+        }
+
+        this.setMatchData(this.matchData);
     }
 
     public onSubmit(){
@@ -103,7 +125,7 @@ export class AppData {
 
         // Home page
         if(this.matchNumber) this.matchNumber = parseInt(`${this.matchNumber}`) + 1;
-        this.retrieveTBAData();
+        this.retrieveMatchData();
         
         // Auto
         for(let i = 0; i < this.autoCoral.length; i++){

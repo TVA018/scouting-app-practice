@@ -10,8 +10,8 @@ interface ProfileRadioProps {
 
 const ProfileRadio = ({baseText, id, value}: ProfileRadioProps) => {
   const context = useAppContext();
-  const profileIdentifier = baseText;
-  const teamNumber = ((context.teamNumbers && typeof context.profile == "number") ? ` (${context.teamNumbers[value]})` : "");
+  const profileIdentifier = (context.matchData && typeof context.matchData[value].scouterName === "string") ? context.matchData[value].scouterName : baseText;
+  const teamNumber = ((context.matchData && typeof context.profile == "number") ? ` (${context.matchData[value].teamNumber})` : "");
   const text = profileIdentifier + teamNumber;
 
   const onChange = () => {
