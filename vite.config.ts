@@ -6,5 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/scouting-app-practice"
+  base: "/scouting-app-practice",
+  server: {
+    port: 80
+  }
 })
