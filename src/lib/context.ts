@@ -68,7 +68,6 @@ export class AppData {
 
     public async retrieveMatchData(){
         if(!this.matchNumber){
-            alert("NO MATCH NUMBER PROVIDED");
             return;
         } else if(!this.setMatchData){
             alert("SET MATCH DATA DOES NOT EXIST");
@@ -76,11 +75,18 @@ export class AppData {
         }
 
         // Getting scouter name
-        const scouterNameRequest = await fetch(`${Constants.BACK_END_URL}match/${this.matchNumber}`, {
-            method: "GET",
-        });
+        let scouterNames;
 
-        const scouterNames = await scouterNameRequest.json();
+        try {
+            const scouterNameRequest = await fetch(`${Constants.BACK_END_URL}match/${this.matchNumber}`, {
+                method: "GET",
+            });
+    
+            scouterNames = await scouterNameRequest.json();
+        } catch(error) {
+            console.warn(error)
+            scouterNames = Array(6).fill(undefined).map(_ => {return {scouterName: undefined}});
+        }
 
         // Getting team numbers
         const extractTeamNumbers = (teamKeys: string[]) => {
@@ -155,13 +161,18 @@ export class AppData {
         // clears the data partially, keeping certain values such as the scouter name
         // have to use if statements because TypeScript sucks
         // It's ok to set values directly because switching back to other pages will re-render the components
-        await fetch(`${Constants.BACK_END_URL}scouting-data/add`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: this.stringify()
-        });
+        try {
+            await fetch(`${Constants.BACK_END_URL}scouting-data/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: this.stringify()
+            });
+        } catch(error){
+            console.warn(error);
+            alert("COULD NOT ACCESS BACK-END, DATA WAS NOT WRITTEN TO THE GOOGLE SHEETS.");
+        }
 
         // Home page
         if(this.matchNumber) this.matchNumber = parseInt(`${this.matchNumber}`) + 1;
