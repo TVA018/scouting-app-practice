@@ -169,7 +169,6 @@ export class AppData {
                 },
                 body: this.stringify()
             });
-            console.log("TEST 2");
         } catch(error){
             console.warn(error);
             alert("COULD NOT ACCESS BACK-END, DATA WAS NOT WRITTEN TO THE GOOGLE SHEETS.");
@@ -178,7 +177,6 @@ export class AppData {
         // Home page
         if(this.matchNumber) this.matchNumber = parseInt(`${this.matchNumber}`) + 1;
         this.retrieveMatchData();
-        console.log("TEST");
         
         // Auto
         for(let i = 0; i < this.autoCoral.length; i++){
